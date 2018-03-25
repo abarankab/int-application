@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Результаты участника</title>
+</head>
+<body>
+
+{% for result in results %}
+    {{ result.name }}
+    <br>
+    {{ result.score }}
+    <br>
+{% endfor %}
+
+</body>
+</html>

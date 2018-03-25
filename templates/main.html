@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поступление в школу &laquo;Интеллектуал&raquo;</title>
+</head>
+<body>
+
+<form method="post" action="/results/">
+    {% csrf_token %}
+    <input type="text" id="id" name="id" placeholder="Мой код">
+    <input type="submit" value="Отправить">
+</form>
+
+</body>
+</html>
