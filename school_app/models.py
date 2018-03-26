@@ -1,7 +1,10 @@
+import uuid
+
 from django.db import models
 
 # Create your models here.
 from django.db.models import Model
+from django.forms import forms
 
 
 class Student(Model):
@@ -17,7 +20,7 @@ class Student(Model):
 
 
 class Subject(Model):
-    id = models.IntegerField(blank=False, primary_key=True)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=100, blank=False, unique=False)
     task_class = models.IntegerField(blank=False, unique=False)
     #max_score = models.IntegerField(blank=False, unique=False) TODO
@@ -28,11 +31,23 @@ class Subject(Model):
 
 
 class Result(Model):
-    student_id = models.ForeignKey('Student', on_delete=models.PROTECT)
-    subject_id = models.ForeignKey('Subject', on_delete=models.PROTECT)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    student_reference = models.ForeignKey('Student', null=False, blank=False, on_delete=models.PROTECT)
+    subject_reference = models.ForeignKey('Subject', null=False, blank=False, on_delete=models.PROTECT)
     score = models.CharField(max_length=200, blank=False, unique=False)
 
+
+    def clean(self):
+        same = Result.objects.\
+            filter(student_reference=self.student_reference,
+                   subject_reference=self.subject_reference)\
+            .count()
+
+        if same != 0:
+            raise forms.ValidationError("Result with same parameters already exists")
+
+
     def __str__(self):
-        student = str(self.student_id)
-        subject = str(self.subject_id.name)
+        student = str(self.student_reference)
+        subject = str(self.subject_reference.name)
         return student + " " + subject

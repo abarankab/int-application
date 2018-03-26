@@ -1,3 +1,4 @@
+from django.http import HttpResponseNotFound
 from django.shortcuts import render, redirect
 
 # Create your views here.
@@ -5,14 +6,17 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_protect
 
-from school_app.forms import IdForm
 from school_app.models import Result, Subject
-from logging import error
 
 
 class IdPendingView(View):
-    def get(self, request):
-        return render(request, 'main.html')
+    def get(self, request, error):
+        if error == "incorrect":
+            return render(request, 'main.html', {'errors' : ['1']})
+        elif error == "":
+            return render(request, 'main.html', {'errors' : []})
+        else:
+            return HttpResponseNotFound()
 
 
 class GetResultsView(View):
@@ -20,14 +24,14 @@ class GetResultsView(View):
     def post(self, request):
         id = request.POST.get('id', '')
 
-        if id.strip() != '' and Result.objects.filter(student_id=id).count() != 0:
+        if id.strip() != '' and Result.objects.filter(student_reference=id).count() != 0:
             
-            results_raw = Result.objects.filter(student_id=id).order_by('subject_id')
+            results_raw = Result.objects.filter(student_reference=id).order_by('subject_reference')
             results = {'results' : []}
 
             for result in results_raw:
                 score = result.score
-                name = result.subject_id.name
+                name = result.subject_reference.name
 
                 results['results'].append({
                                 'name' : name,
@@ -37,4 +41,4 @@ class GetResultsView(View):
             return render(request, 'results.html', results)
 
         else:
-            return redirect('/')
+            return redirect('/incorrect')
