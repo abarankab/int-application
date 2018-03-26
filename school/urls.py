@@ -21,5 +21,5 @@ from school_app import views
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^results/', views.GetResultsView.as_view()),
-    url(r'^(?P<error>.*)', views.IdPendingView.as_view()),
+    url(r'^$', views.IdPendingView.as_view()),
 ]

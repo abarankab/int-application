@@ -6,9 +6,11 @@
 </head>
 <body>
 
-{% for error in errors %}
-    Поступающего с таким кодом нет
-{% endfor %}
+{% if messages %}
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+{% endif %}
 
 <form method="post" action="/results/">
     {% csrf_token %}

@@ -7,16 +7,12 @@ from django.views import View
 from django.views.decorators.csrf import csrf_protect
 
 from school_app.models import Result, Subject
+from django.contrib import messages
 
 
 class IdPendingView(View):
-    def get(self, request, error):
-        if error == "incorrect":
-            return render(request, 'main.html', {'errors' : ['1']})
-        elif error == "":
-            return render(request, 'main.html', {'errors' : []})
-        else:
-            return HttpResponseNotFound()
+    def get(self, request):
+        return render(request, 'main.html')
 
 
 class GetResultsView(View):
@@ -41,4 +37,5 @@ class GetResultsView(View):
             return render(request, 'results.html', results)
 
         else:
-            return redirect('/incorrect')
+            messages.error(request, "Поступающего с таким ключом нет")
+            return redirect('/')
