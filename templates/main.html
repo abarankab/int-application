@@ -2,21 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    {% include "bootstrap.html" %}
+
     <title>Поступление в школу &laquo;Интеллектуал&raquo;</title>
 </head>
 <body>
 
-{% if messages %}
-    {% for message in messages %}
-        {{ message }}
-    {% endfor %}
-{% endif %}
+{% include "navbar.html" %}
 
-<form method="post" action="/results/">
-    {% csrf_token %}
-    <input type="text" id="id" name="id" placeholder="Мой код">
-    <input type="submit" value="Отправить">
-</form>
+<div class="container">
+
+    {% include "messages.html" %}
+
+    {% include "form.html" %}
+    
+</div>
 
 </body>
 </html>

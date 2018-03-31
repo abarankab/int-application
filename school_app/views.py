@@ -36,6 +36,10 @@ class GetResultsView(View):
 
             return render(request, 'results.html', results)
 
+        elif id.strip() != '':
+            messages.error(request, "Поступающего с таким ID нет")
+            return redirect('/')
+
         else:
-            messages.error(request, "Поступающего с таким ключом нет")
+            messages.error(request, "Вы случайно ввели пустой ID")
             return redirect('/')

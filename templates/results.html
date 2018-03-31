@@ -2,16 +2,28 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    {% include "bootstrap.html" %}
+
     <title>Результаты участника</title>
 </head>
 <body>
 
-{% for result in results %}
-    {{ result.name }}
-    <br>
-    {{ result.score }}
-    <br>
-{% endfor %}
+{% include "navbar.html" %}
+
+<div class="container">
+    <ul class="list-group ul-custom">
+    {% for result in results %}
+        <li class="list-group-item li-custom">
+            {{ result.name }}
+
+            <span style="position: absolute; right: 3%">
+                {{ result.score }}
+            </span>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
 
 </body>
 </html>
