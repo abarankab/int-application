@@ -1,13 +1,22 @@
-.jumbo-custom {
-    position: absolute;
-    left: 20%;
-    right: 20%;
-    top: 30%;
+.navbar-res {
+    background-color: #ffd05d;
+    font-size: 25px;
+}
+
+#hr-custom {
+    border: none;
+    background-color: #e6e6e6;
+    border-radius: 0.1px;
+    height: 1px;
+    margin: 0;
+    margin-top: 2px !important;
+    margin-bottom: 1px;
+    width: 50%
 }
 
 .msg-custom {
     position: absolute !important;
-    top: 15%;
+    top: 25%;
     left: 20%;
     right: 20%;
 }
@@ -17,31 +26,75 @@
     height: 50px;
 }
 
+
 .ul-custom {
-    position: absolute;
-    left: 20%;
-    right: 20%;
-    top: 30%;
+    width: 50%;
+    margin: auto;
+    margin-top: 4%;
+}
+
+.ul-result {
+    width: 60%;
+    margin: auto;
+    margin-top: 4%;
 }
 
 .li-custom {
     font-size: 25px;
+    padding-top: 25px; padding-bottom: 25px; padding-left: 5%
 }
 
+.td-custom {
+    font-size: 30px !important;
+}
+
+.li-success {
+    background-color: #e7f7e9 !important;
+}
+
+.li-result {
+    font-size: 35px;
+}
+
+.form-custom {
+    margin: 0;
+    margin-top: 10%;
+}
+
+.input-custom {
+    width: 90%;
+    border: 0;
+    height: 40px;
+}
+
+.input-custom:focus {
+    outline: none;
+}
+
+.input-custom[placeholder] {
+    line-height: 40px;
+    font-size: 30px;
+}
+
+.btn-custom {
+    font-size: 25px !important;
+    padding: 8px 16px 10px 16px !important;
+}
+
+
 @media (max-width: 992px) {
-    .jumbo-custom {
-        position: absolute;
-        left: 3%;
-        right: 3%;
-        top: 30%;
+    .navbar-res {
+        font-size: 41px;
+        padding-top: 1.6% !important;
+        padding-bottom: 1.6% !important;
     }
 
     .msg-custom {
         position: absolute !important;
-        top: 15%;
-        left: 3%;
-        right: 3%;
-        font-size: 40px !important;
+        top: 20%;
+        left: 5%;
+        right: 10%;
+        font-size: 55px !important;
     }
 
     .img-custom {
@@ -50,14 +103,27 @@
     }
 
     .ul-custom {
-        position: absolute;
-        left: 3%;
-        right: 3%;
-        top: 30%;
+        width: 90%;
+        margin: auto;
+        margin-top: 30%;
+    }
+
+    .container {
+        margin: 0 0 0 0 !important;
+    }
+
+    .ul-result {
+        width: 90%;
+        margin: auto;
+        margin-top: 10%;
     }
 
     .li-custom {
         font-size: 50px;
+    }
+
+    .li-result {
+        font-size: 54px;
     }
 
     .navbar-custom {
@@ -66,6 +132,48 @@
     }
 
     .btn-custom {
+        font-size: 60px !important;
+        padding: 1.5% 5% 2.5% !important;
+    }
+
+    .td-custom {
         font-size: 40px !important;
+    }
+
+    .table-custom {
+        margin: 1%;
+    }
+
+    .form-custom {
+        margin: auto;
+        margin-top: 40%;
+        width: 90%;
+    }
+
+    .h1 {
+        font-size: 100px !important;
+    }
+
+    .input-custom {
+        margin-top: 2%;
+        width: 100%;
+        border: 0;
+        height: 120px;
+    }
+
+    .input-custom[placeholder] {
+        line-height: 120px;
+        font-size: 80px;
+    }
+
+    #hr-custom {
+        border: none;
+        background-color: #e6e6e6;
+        border-radius: 3px;
+        height: 4px;
+        margin: 0;
+        margin-top: 2px !important;
+        margin-bottom: 100px;
+        width: 85%
     }
 }

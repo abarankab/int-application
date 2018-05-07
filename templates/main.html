@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
 
     {% include "bootstrap.html" %}
+    <script src="/static/set_left_main.js"></script>
+    <script src="/static/hr-animation.js"></script>
 
     <title>Поступление в школу &laquo;Интеллектуал&raquo;</title>
 </head>
 <body>
 
 {% include "navbar.html" %}
+{% include "navbar-hello.html" %}
 
-<div class="container">
+{% include "messages.html" %}
+{% include "form.html" %}
 
-    {% include "messages.html" %}
-
-    {% include "form.html" %}
-    
-</div>
 
 </body>
 </html>

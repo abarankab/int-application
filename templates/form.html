@@ -1,12 +1,12 @@
-<div class="jumbotron jumbo-custom">
+<div class="form-custom">
     <form method="post" action="/results/">
 
         {% csrf_token %}
 
-         <div class="form-group">
-            <label for="id" class="h4" style="margin-bottom: 1.5%">ID участника</label>
-            <input type="text" class="form-control" id="id" name="id" placeholder="Например, 1815522">
-         </div>
+        <label for="id" class="h1" style="margin-bottom: 1.5%">ID участника</label>
+        <br>
+        <input type="text" id="id" name="id" class="input-custom" placeholder="Например, 1815522" autocomplete="off" onfocus="add()" onblur="remove()">
+        <hr id="hr-custom">
 
         <button type="submit" class="btn btn-primary btn-custom" style="margin-top: 2%">Показать результаты</button>
 

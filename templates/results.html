@@ -5,25 +5,42 @@
 
     {% include "bootstrap.html" %}
 
+    <script src="/static/set_left.js"></script>
+
     <title>Результаты участника</title>
 </head>
 <body>
 
 {% include "navbar.html" %}
+{% include "navbar_results.html" %}
 
-<div class="container">
-    <ul class="list-group ul-custom">
-    {% for result in results %}
+<ul class="list-group ul-custom">
+{% for result in results %}
+
+    {% if result.highlighted %}
+        <li class="list-group-item li-custom li-success">
+    {% else %}
         <li class="list-group-item li-custom">
-            {{ result.name }}
+    {% endif %}
 
-            <span style="position: absolute; right: 3%">
-                {{ result.score }}
-            </span>
-        </li>
-    {% endfor %}
-    </ul>
+    {{ result.name }}
+
+    <span style="position: absolute; right:  6%">
+        {{ result.score }}
+    </span>
+
+    </li>
+{% endfor %}
+</ul>
+
+{% if grade != '10' %}
+
+<div class="list-group ul-result li-result">
+    {{ mark }}
 </div>
+
+{% endif %}
+
 
 </body>
 </html>
