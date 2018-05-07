@@ -69,7 +69,9 @@ class GetResultsView(View):
             for i in range(len(payload['results'])):
 
                 if grade != 10 and\
-                        (payload['results'][i]['name'] == scores[0][1] or payload['results'][i]['name'] == scores[1][1]):
+                        (payload['results'][i]['name'] == scores[0][1]
+                         or (len(scores) > 1 and
+                                     payload['results'][i]['name'] == scores[1][1])):
 
                     payload['results'][i]['highlighted'] = True
                     sum_of_best += payload['results'][i]['score']
