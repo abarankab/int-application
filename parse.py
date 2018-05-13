@@ -9,7 +9,7 @@ from school_app.models import Subject, Student, Result
 print("Какой worksheet парсить?")
 ind = int(input()) - 1
 
-wb = op.load_workbook("table.xlsx")
+wb = op.load_workbook("table_3.xlsx")
 ws = wb.worksheets[ind]
 grade = int(wb.sheetnames[ind][1])
 
