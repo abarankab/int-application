@@ -9,10 +9,10 @@ from django.forms import forms
 
 class Student(Model):
     id = models.CharField(max_length=15, blank=False, primary_key=True, help_text='''
-                                                                Format: yycc-iiii
+                                                                Format: yycc-iii
                                                                 yy - year
                                                                 cc - class
-                                                                iiii - unique id''')
+                                                                iii - unique id''')
 
 
     def __str__(self):

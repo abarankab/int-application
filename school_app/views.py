@@ -80,7 +80,6 @@ class GetResultsView(View):
 
             from logging import warning
 
-            payload['mark'] = "Итог: " + " + ".join(parts) + " = " + str(sum_of_best) + " из " + str(max_sum)
             payload['id'] = id
             payload['grade'] = 10
 
