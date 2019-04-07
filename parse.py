@@ -23,10 +23,10 @@ def parse_worksheet(ind):
     people = []
 
     for current_subject in pattern:
-        exists = Subject.objects.filter(name=current_subject, task_class=grade).count() == 1
+        exists = Subject.objects.filter(name=current_subject, task_grade=grade, profile_id=ind).count() == 1
         if not exists:
-            order_id = 0 if current_subject != "приглашение на собеседование" else 1
-            new_subject = Subject(name=current_subject, task_class=grade, order_id=order_id)
+            order_id = ind * 10 if current_subject != "приглашение на собеседование" else ind * 10 + 1
+            new_subject = Subject(name=current_subject, task_grade=grade, order_id=order_id, profile_id=ind)
             new_subject.save()
 
     print(grade)
@@ -69,7 +69,7 @@ def parse_worksheet(ind):
                 continue
             if person[1][i] != None:
                 current_student = Student.objects.get(id=person[0])
-                current_subject = Subject.objects.get(name=pattern[i], task_class=grade)
+                current_subject = Subject.objects.get(name=pattern[i], task_grade=grade, profile_id=ind)
 
                 new_result = Result(student_reference=current_student,
                                     subject_reference=current_subject,

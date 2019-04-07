@@ -4,12 +4,14 @@ from django.contrib import admin
 from school_app.models import Student, Subject, Result
 
 
-class IntAdmin(admin.ModelAdmin):
+class ResultAdmin(admin.ModelAdmin):
+    list_display = ('student_reference', 'subject_reference')
+    search_fields = (
+        'student_reference__id',
+    )
 
-    admin.site.register(Student)
-    admin.site.register(Subject)
-    admin.site.register(Result)
+class SubjectAdmin(admin.ModelAdmin):
+    list_display = ('__str__',)
 
-    list_display = ('Student', 'Subject', 'Result')
-
-    #TODO search fields
+admin.site.register(Result, ResultAdmin)
+admin.site.register(Subject, SubjectAdmin)

@@ -21,13 +21,14 @@ class Student(Model):
 
 class Subject(Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    profile_id = models.IntegerField(blank=False, unique=False, default=0)
     order_id = models.IntegerField(unique=False, default=uuid.uuid4)
     name = models.CharField(max_length=100, blank=False, unique=False)
-    task_class = models.IntegerField(blank=False, unique=False, default=10)
+    task_grade = models.IntegerField(blank=False, unique=False, default=10)
 
 
     def __str__(self):
-        return str(self.name) + " " + str(self.task_class)
+        return str(self.name) + " " + str(self.task_grade) + " " + str(self.profile_id)
 
 
 class Result(Model):
@@ -50,4 +51,4 @@ class Result(Model):
     def __str__(self):
         student = str(self.student_reference)
         subject = str(self.subject_reference.name)
-        return student + " " + subject + " результат:" + self.score + " класс работы: " + str(self.subject_reference.task_class)
+        return student + " " + subject + " результат:" + self.score + " класс работы: " + str(self.subject_reference.task_grade)
