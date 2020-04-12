@@ -2,41 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Даты и логины</title>
 
     {% include "bootstrap.html" %}
 
-    <script src="/static/set_left.js"></script>
-
-    <title>Результаты участника</title>
+    <link rel="shortcut icon" type="image/png" href="/static/crow.svg"/>
 </head>
 <body>
+
+<script src="/static/set_left_main.js"></script>
+<script src="/static/hr-animation.js"></script>
 
 {% include "navbar.html" %}
 {% include "navbar_results.html" %}
 
 <ul class="list-group ul-custom">
-{% for result in results %}
+{% for olymp in olymp_data %}
+    <li class="list-group-item li-custom">
+        <ul class="small-ul">
+        <li class="small-li">
+            <b>
+                {{ olymp.subject }}
+            </b>
+        </li>
 
-    {% if result.highlighted %}
-        <li class="list-group-item li-custom li-success">
-    {% else %}
-        <li class="list-group-item li-custom">
-    {% endif %}
+        <li class="small-li small-li-date">
+            {{ olymp.date }}
+        </li>
 
-    {{ result.name }}
-
-    <span style="position: absolute; right:  6%">
-        {{ result.score }}
-    </span>
-
+        <li class="small-li small-li-login">
+            {{ olymp.login }}
+        </li>
+        </ul>
     </li>
 {% endfor %}
 </ul>
-
-{% if grade != '10' %}
-
-{% endif %}
-
 
 </body>
 </html>

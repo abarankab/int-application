@@ -6,89 +6,50 @@ from django.utils.decorators import method_decorator
 from django.views import View
 from django.views.decorators.csrf import csrf_protect
 
-from school_app.models import Result, Subject, Student
+from school_app.models import Student, OlympData
 from django.contrib import messages
+
 
 class IdPendingView(View):
     def get(self, request):
-        return render(request, 'main.html')
+        return render(request, "main.html")
 
 
-class GetResultsView(View):
-    def convert(self, value):
-        try:
-            return int(value)
-        except ValueError:
-            return float(value)
+def olymp_key(olymp):
+    month_order = {
+        "апреля": 0,
+        "мая": 4
+    }
 
+    day, month = olymp["date"].split(" ")
+    return (month_order[month], day)
+
+
+class GetOlympView(View):
 
     @method_decorator(csrf_protect)
     def post(self, request):
-        id = request.POST.get('id', '')
+        id = request.POST.get("id", "")
 
-        import logging
-        logging.warning(id)
-        logging.warning(Student.objects.filter(id=id).count())
+        if id.strip() != "" and Student.objects.filter(id=id).count() != 0:
+            olymp_data_raw = OlympData.objects.filter(student_reference=id).order_by("date")
+            olymp_data = []
 
-        if id.strip() != '' and Student.objects.filter(id=id).count() != 0:
+            for olymp in olymp_data_raw:
+                olymp_data.append({
+                    "subject": olymp.subject,
+                    "date": olymp.date,
+                    "login": olymp.login,
+                })
 
-            grade = int(str(id)[2:4])
-            
-            results_raw = Result.objects.filter(student_reference=id).order_by(
-                ('subject_reference__order_id'))
+            olymp_data.sort(key=olymp_key)
 
-            payload = {'results' : []}
-            parts = []
-            scores = []
-            sum_of_best = 0
-            max_sum = 0
+            return render(request, "results.html", {"olymp_data": olymp_data, "id": id})
 
-            for result in results_raw:
-                score = result.score
-                name = result.subject_reference.name
-
-                payload['results'].append({
-                                'name': name,
-                                'score': score,
-                                'highlighted': False,
-                                })
-
-                if grade != 10:
-                    payload['results'][-1]['score'] = self.convert(payload['results'][-1]['score'])
-
-                if grade != 10 and name != "Тест по математике" and name != "Межпредметный тест":
-                    scores.append((self.convert(score), name,))
-                elif grade != 10:
-                    payload['results'][-1]['highlighted'] = True
-                    sum_of_best += self.convert(score)
-                    max_sum += 20
-                    parts.append(str(score))
-
-            scores.sort(key=lambda x: -x[0])
-
-            for i in range(len(payload['results'])):
-
-                if grade != 10 and\
-                        (payload['results'][i]['name'] == scores[0][1]
-                         or (len(scores) > 1 and
-                                     payload['results'][i]['name'] == scores[1][1])):
-
-                    payload['results'][i]['highlighted'] = True
-                    sum_of_best += payload['results'][i]['score']
-                    max_sum += 20
-                    parts.append(str(payload['results'][i]['score']))
-
-            from logging import warning
-
-            payload['id'] = id
-            payload['grade'] = 10
-
-            return render(request, 'results.html', payload)
-
-        elif id.strip() != '':
-            messages.error(request, "Поступающего с таким ID нет")
-            return redirect('/')
+        elif id.strip() != "":
+            messages.error(request, "Ученика с таким ID нет")
+            return redirect("/")
 
         else:
             messages.error(request, "Вы случайно ввели пустой ID")
-            return redirect('/')
+            return redirect("/")

@@ -1,17 +1,18 @@
 from django.contrib import admin
 
 # Register your models here.
-from school_app.models import Student, Subject, Result
+from school_app.models import Student, OlympData
 
 
-class ResultAdmin(admin.ModelAdmin):
-    list_display = ('student_reference', 'subject_reference')
-    search_fields = (
-        'student_reference__id',
-    )
-
-class SubjectAdmin(admin.ModelAdmin):
+class StudentAdmin(admin.ModelAdmin):
     list_display = ('__str__',)
+    search_fields = ('__str__',)
 
-admin.site.register(Result, ResultAdmin)
-admin.site.register(Subject, SubjectAdmin)
+
+class OlympDataAdmin(admin.ModelAdmin):
+    list_display = ('__str__',)
+    search_fields = ('__str__',)
+
+
+admin.site.register(Student, StudentAdmin)
+admin.site.register(OlympData, OlympDataAdmin)

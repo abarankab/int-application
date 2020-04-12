@@ -1,13 +1,22 @@
-.jumbo-custom {
-    position: absolute;
-    left: 20%;
-    right: 20%;
-    top: 30%;
+.navbar-res {
+    background-color: #ffd05d;
+    font-size: 25px;
+}
+
+#hr-custom {
+    border: none;
+    background-color: #e6e6e6;
+    border-radius: 0.1px;
+    height: 1px;
+    margin: 0;
+    margin-top: 2px !important;
+    margin-bottom: 1px;
+    width: 50%
 }
 
 .msg-custom {
-    position: absolute;
-    top: 15%;
+    position: absolute !important;
+    top: 23%;
     left: 20%;
     right: 20%;
 }
@@ -17,23 +26,184 @@
     height: 50px;
 }
 
+
+.ul-custom {
+    width: 50%;
+    margin: auto;
+    margin-top: 4%;
+    margin-bottom: 30% !important;
+}
+
+.ul-result {
+    width: 60%;
+    margin: auto;
+    margin-top: 4%;
+}
+
+.li-custom {
+    font-size: 25px;
+    padding-top: 25px; padding-bottom: 25px; padding-left: 5%
+}
+
+.td-custom {
+    font-size: 30px !important;
+}
+
+.li-success {
+    background-color: #e7f7e9 !important;
+}
+
+.li-result {
+    font-size: 35px;
+}
+
+.form-custom {
+    margin: 0;
+    margin-top: 10%;
+}
+
+.input-custom {
+    width: 90%;
+    border: 0;
+    height: 40px;
+}
+
+.input-custom:focus {
+    outline: none;
+}
+
+.input-custom[placeholder] {
+    line-height: 40px;
+    font-size: 30px;
+}
+
+.btn-custom {
+    font-size: 25px !important;
+    padding: 8px 16px 10px 16px !important;
+}
+
+.small-li {
+    list-style-type: none;
+}
+
+.small-ul {
+    padding-inline-start: 10px;
+}
+
+.small-li-date {
+    font-size: 22px;
+    margin-top: -7px;
+    margin-bottom: 7px;
+}
+
+.small-li-login {
+    color: black;
+    user-select: all;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #aaaaaa;
+}
+
+
 @media (max-width: 992px) {
-    .jumbo-custom {
-        position: absolute;
-        left: 20%;
-        right: 20%;
-        top: 30%;
+    .navbar-res {
+        font-size: 41px;
+        padding-top: 1.6% !important;
+        padding-bottom: 1.6% !important;
     }
 
     .msg-custom {
-        position: absolute;
-        top: 15%;
-        left: 20%;
-        right: 20%;
+        position: absolute !important;
+        top: 20%;
+        left: 5%;
+        right: 10%;
+        font-size: 55px !important;
     }
 
     .img-custom {
-        width: 10px;
-        height: 10px;
+        width: 100px;
+        height: 100px;
+    }
+
+    .ul-custom {
+        width: 90%;
+        margin: auto;
+        margin-top: 10%;
+        margin-bottom: 30% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .container {
+        margin: 0 0 0 0 !important;
+    }
+
+    .ul-result {
+        width: 90%;
+        margin: auto;
+        margin-top: 10%;
+    }
+
+    .li-custom {
+        font-size: 50px;
+    }
+
+    .li-result {
+        font-size: 54px;
+    }
+
+    .navbar-custom {
+        font-size: 50px !important;
+        padding: 3% !important;
+    }
+
+    .btn-custom {
+        font-size: 60px !important;
+        padding: 1.5% 5% 2.5% !important;
+    }
+
+    .td-custom {
+        font-size: 40px !important;
+    }
+
+    .table-custom {
+        margin: 1%;
+    }
+
+    .form-custom {
+        margin: auto;
+        margin-top: 40%;
+        width: 90%;
+    }
+
+    .h1 {
+        font-size: 100px !important;
+    }
+
+    .input-custom {
+        margin-top: 2%;
+        width: 100%;
+        border: 0;
+        height: 120px;
+    }
+
+    .input-custom[placeholder] {
+        line-height: 120px;
+        font-size: 80px;
+    }
+
+    #hr-custom {
+        border: none;
+        background-color: #e6e6e6;
+        border-radius: 3px;
+        height: 4px;
+        margin: 0;
+        margin-top: 2px !important;
+        margin-bottom: 100px;
+        width: 85%
+    }
+
+    .small-li-date {
+        font-size: 50px;
     }
 }

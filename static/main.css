@@ -16,7 +16,7 @@
 
 .msg-custom {
     position: absolute !important;
-    top: 25%;
+    top: 23%;
     left: 20%;
     right: 20%;
 }
@@ -31,6 +31,7 @@
     width: 50%;
     margin: auto;
     margin-top: 4%;
+    margin-bottom: 30% !important;
 }
 
 .ul-result {
@@ -81,6 +82,28 @@
     padding: 8px 16px 10px 16px !important;
 }
 
+.small-li {
+    list-style-type: none;
+}
+
+.small-ul {
+    padding-inline-start: 10px;
+}
+
+.small-li-date {
+    font-size: 22px;
+    margin-top: -7px;
+    margin-bottom: 7px;
+}
+
+.small-li-login {
+    color: black;
+    user-select: all;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: #aaaaaa;
+}
+
 
 @media (max-width: 992px) {
     .navbar-res {
@@ -105,7 +128,10 @@
     .ul-custom {
         width: 90%;
         margin: auto;
-        margin-top: 30%;
+        margin-top: 10%;
+        margin-bottom: 30% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 
     .container {
@@ -175,5 +201,9 @@
         margin-top: 2px !important;
         margin-bottom: 100px;
         width: 85%
+    }
+
+    .small-li-date {
+        font-size: 50px;
     }
 }
