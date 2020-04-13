@@ -10,7 +10,11 @@ def parse_table(path):
     wb = op.load_workbook(path)
     ws = wb.worksheets[0]
 
-    MIN_COL = 5
+    if path.__contains__('10kl'):
+        MIN_COL = 5
+    else:
+        MIN_COL = 4
+
     MAX_COL = ws.max_column + 1
 
     MIN_ROW = 3
